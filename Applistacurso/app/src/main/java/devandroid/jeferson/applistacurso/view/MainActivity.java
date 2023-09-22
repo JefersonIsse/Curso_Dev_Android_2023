@@ -10,10 +10,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import devandroid.jeferson.applistacurso.R;
+import devandroid.jeferson.applistacurso.controller.PessoaController;
 import devandroid.jeferson.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    PessoaController controller;
     Pessoa pessoa;
     Pessoa outraPessoa;
     EditText editprimeironome;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        controller = new PessoaController();
+        controller.toString();
 
         pessoa = new Pessoa();
         // Atribuir conteudo, dados, valores para Objeto
@@ -93,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelContato(editTel.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo" + pessoa.toString(), Toast.LENGTH_LONG).show();
+
+        // Metodo Salvar utilizando a controller
+
+            controller.salvar(pessoa);
+
 
 
             }
