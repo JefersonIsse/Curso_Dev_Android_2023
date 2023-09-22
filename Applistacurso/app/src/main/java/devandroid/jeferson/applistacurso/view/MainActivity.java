@@ -50,36 +50,32 @@ public class MainActivity extends AppCompatActivity {
         controller = new PessoaController();
         controller.toString();
 
-        pessoa = new Pessoa();
-        // Atribuir conteudo, dados, valores para Objeto
-        // Conforme o seu MODELO, TEMPLATE
+        // popular o objeto
 
-        /*
-        pessoa.setPrimeiroNome("Jeferson");
-        pessoa.setSobreNome("Isse");
-        pessoa.setCursoDesejado("Android");
-        pessoa.setTelContato("51-999914688");
-        */
+       pessoa = new Pessoa();
+       pessoa.setPrimeiroNome(preferences.getString("primeiroNome",""));
+       pessoa.setSobreNome(preferences.getString("sobreNome",""));
+       pessoa.setCursoDesejado(preferences.getString("nomeCurso",""));
+       pessoa.setTelContato(preferences.getString("Contato",""));
 
-        outraPessoa = new Pessoa();
-        outraPessoa.setPrimeiroNome("Lucas");
-        outraPessoa.setSobreNome("Davi");
-        outraPessoa.setCursoDesejado("Fisica");
-        outraPessoa.setTelContato("51-981756793");
+
+         // Inserir dados do Objeto no EditText
+
 
         editprimeironome = findViewById(R.id.editprimeironome);
         editsobrenome = findViewById(R.id.editsobrenome);
         editnomecurso = findViewById(R.id.editnomecurso);
         editTel = findViewById(R.id.editTel);
 
-        btnlimpar = findViewById(R.id.btnlimpar);
-        btnsalvar = findViewById(R.id.btnsalvar);
-        btnfinalizar = findViewById(R.id.btnfinalizar);
-
         editprimeironome.setText(pessoa.getPrimeiroNome());
         editsobrenome.setText(pessoa.getSobreNome());
         editnomecurso.setText(pessoa.getCursoDesejado());
         editTel.setText(pessoa.getTelContato());
+
+
+        btnlimpar = findViewById(R.id.btnlimpar);
+        btnsalvar = findViewById(R.id.btnsalvar);
+        btnfinalizar = findViewById(R.id.btnfinalizar);
 
         // Inserindo Função para os Botões
         btnlimpar.setOnClickListener(new View.OnClickListener() {
@@ -156,6 +152,5 @@ public class MainActivity extends AppCompatActivity {
         // To String substitui os comandos acima de "dados pessoa"
 
         Log.i("POOAndroid", "Objeto pessoa: " + pessoa.toString());
-        Log.i("POOAndroid", "Objeto outraPessoa: " + outraPessoa.toString());
     }
 }
