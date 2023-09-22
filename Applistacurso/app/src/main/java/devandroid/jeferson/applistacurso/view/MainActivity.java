@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     SharedPreferences preferences;
+    SharedPreferences.Editor listavip;
 
     // Cria o atributo para salvar o nome do arquivo .xml
     public static final String NOME_PREFERENCES = "pref_listavip";
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     PessoaController controller;
     Pessoa pessoa;
-    Pessoa outraPessoa;
     EditText editprimeironome;
     EditText editsobrenome;
     EditText editnomecurso;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         preferences = getSharedPreferences(NOME_PREFERENCES,0);
 
         // Cria a lista para receber os dados e associa ao arquivo
-        SharedPreferences.Editor listavip = preferences.edit();
+        listavip = preferences.edit();
 
 
         controller = new PessoaController();
@@ -86,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
                 editsobrenome.setText("");
                 editnomecurso.setText("");
                 editTel.setText("");
+
+                listavip.clear();
+                listavip.apply();
+
+
 
             }
         });
