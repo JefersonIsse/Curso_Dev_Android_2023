@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import devandroid.jeferson.applistacurso.R;
 import devandroid.jeferson.applistacurso.model.Pessoa;
@@ -36,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
         // Atribuir conteudo, dados, valores para Objeto
         // Conforme o seu MODELO, TEMPLATE
 
+        /*
         pessoa.setPrimeiroNome("Jeferson");
         pessoa.setSobreNome("Isse");
         pessoa.setCursoDesejado("Android");
         pessoa.setTelContato("51-999914688");
+        */
 
        outraPessoa = new Pessoa();
        outraPessoa.setPrimeiroNome("Lucas");
@@ -61,8 +65,44 @@ public class MainActivity extends AppCompatActivity {
        editnomecurso.setText(pessoa.getCursoDesejado());
        editTel.setText(pessoa.getTelContato());
 
+       // Inserindo Função para os Botões
+    btnlimpar.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            editprimeironome.setText("");
+            editsobrenome.setText("");
+            editnomecurso.setText("");
+            editTel.setText("");
+
+        }
+    });
+
+       // Botçao finalizar (fecha o App)
+    btnfinalizar.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(MainActivity.this, "Volte Sempre", Toast.LENGTH_LONG).show();
+            finish();
+
+        }
+    });
+
+       // Botão Salvar - Salva uma novo Objeto Pessoa
+    btnsalvar.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            pessoa.setPrimeiroNome(editprimeironome.getText().toString());
+            pessoa.setSobreNome(editsobrenome.getText().toString());
+            pessoa.setCursoDesejado(editnomecurso.getText().toString());
+            pessoa.setTelContato(editTel.getText().toString());
+
+            Toast.makeText(MainActivity.this, "Salvo"+pessoa.toString(), Toast.LENGTH_LONG).show();
 
 
+        }
+    });
 /*
 
        dadosPessoa = "Primeiro nome: ";
