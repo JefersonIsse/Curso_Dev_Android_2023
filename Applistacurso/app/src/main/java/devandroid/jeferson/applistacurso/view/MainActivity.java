@@ -3,6 +3,7 @@ package devandroid.jeferson.applistacurso.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import devandroid.jeferson.applistacurso.R;
 import devandroid.jeferson.applistacurso.model.Pessoa;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
        outraPessoa.setSobreNome("Davi");
        outraPessoa.setCursoDesejado("Fisica");
        outraPessoa.setTelContato("51-981756793");
+/*
 
        dadosPessoa = "Primeiro nome: ";
        dadosPessoa += pessoa.getPrimeiroNome();
@@ -45,18 +47,19 @@ public class MainActivity extends AppCompatActivity {
        dadosPessoa += " Telefone: ";
        dadosPessoa += pessoa.getTelContato();
 
-        dadosOutraPessoa = "Primeiro nome: ";
-        dadosOutraPessoa += outraPessoa.getPrimeiroNome();
-        dadosOutraPessoa += " Sobrenome: ";
-        dadosOutraPessoa += outraPessoa.getSobreNome();
-        dadosOutraPessoa += " Curso Desejado: ";
-        dadosOutraPessoa += outraPessoa.getCursoDesejado();
-        dadosOutraPessoa += " Telefone: ";
-        dadosOutraPessoa += outraPessoa.getTelContato();
+       dadosOutraPessoa = "Primeiro nome: ";
+       dadosOutraPessoa += outraPessoa.getPrimeiroNome();
+       dadosOutraPessoa += " Sobrenome: ";
+       dadosOutraPessoa += outraPessoa.getSobreNome();
+       dadosOutraPessoa += " Curso Desejado: ";
+       dadosOutraPessoa += outraPessoa.getCursoDesejado();
+       dadosOutraPessoa += " Telefone: ";
+       dadosOutraPessoa += outraPessoa.getTelContato();
+*/
 
-       int parada = 0;
+       // To String substitui os comandos acima de "dados pessoa"
 
-
-
+       Log.i("POOAndroid","Objeto pessoa: "+pessoa.toString());
+       Log.i("POOAndroid","Objeto outraPessoa: "+outraPessoa.toString());
     }
 }
