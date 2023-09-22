@@ -55,18 +55,10 @@ public class Pessoa {
                 '}';
     }
 
-    public Pessoa (){
-
-
-
+    public Pessoa() {
 
 
     }
-
-
-
-
-
 
 
 }
