@@ -18,11 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor listavip;
 
-    // Cria o atributo para salvar o nome do arquivo .xml
-    public static final String NOME_PREFERENCES = "pref_listavip";
 
 
     PessoaController controller;
@@ -40,23 +36,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        // Criar o objeto SharedPreferences "0" -> é para leitura e escrita
-        preferences = getSharedPreferences(NOME_PREFERENCES,0);
-
-        // Cria a lista para receber os dados e associa ao arquivo
-        listavip = preferences.edit();
-
-
-        controller = new PessoaController();
+        controller = new PessoaController(MainActivity.this);
         controller.toString();
 
         // popular o objeto
 
        pessoa = new Pessoa();
-       pessoa.setPrimeiroNome(preferences.getString("primeiroNome",""));
-       pessoa.setSobreNome(preferences.getString("sobreNome",""));
-       pessoa.setCursoDesejado(preferences.getString("nomeCurso",""));
-       pessoa.setTelContato(preferences.getString("Contato",""));
+       controller.buscar(pessoa);
 
 
          // Inserir dados do Objeto no EditText
@@ -86,11 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 editsobrenome.setText("");
                 editnomecurso.setText("");
                 editTel.setText("");
-
-                listavip.clear();
-                listavip.apply();
-
-
+                controller.limpar();
 
             }
         });
@@ -117,12 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo" + pessoa.toString(), Toast.LENGTH_LONG).show();
 
-                // Origem dos dados para salvar
-                listavip.putString("primeiroNome",pessoa.getPrimeiroNome());
-                listavip.putString("sobreNome",pessoa.getSobreNome());
-                listavip.putString("nomeCurso",pessoa.getCursoDesejado());
-                listavip.putString("Contato",pessoa.getTelContato());
-                listavip.apply();
 
 
         // Metodo Salvar utilizando a controller
