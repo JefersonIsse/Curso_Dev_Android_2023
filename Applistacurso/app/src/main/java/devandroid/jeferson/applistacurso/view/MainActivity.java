@@ -2,6 +2,7 @@ package devandroid.jeferson.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,14 @@ import devandroid.jeferson.applistacurso.controller.PessoaController;
 import devandroid.jeferson.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+
+
+    SharedPreferences preferences;
+
+    // Cria o atributo para salvar o nome do arquivo .xml
+    public static final String NOME_PREFERENCES = "pref_listavip";
+
 
     PessoaController controller;
     Pessoa pessoa;
@@ -29,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        // Criar o objeto SharedPreferences "0" -> é para leitura e escrita
+        preferences = getSharedPreferences(NOME_PREFERENCES,0);
+
+        // Cria a lista para receber os dados e associa ao arquivo
+        SharedPreferences.Editor listavip = preferences.edit();
+
 
         controller = new PessoaController();
         controller.toString();
@@ -98,6 +115,14 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelContato(editTel.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo" + pessoa.toString(), Toast.LENGTH_LONG).show();
+
+                // Origem dos dados para salvar
+                listavip.putString("primeiroNome",pessoa.getPrimeiroNome());
+                listavip.putString("sobreNome",pessoa.getSobreNome());
+                listavip.putString("nomeCurso",pessoa.getCursoDesejado());
+                listavip.putString("Contato",pessoa.getTelContato());
+                listavip.apply();
+
 
         // Metodo Salvar utilizando a controller
 
