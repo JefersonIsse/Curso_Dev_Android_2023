@@ -17,10 +17,6 @@ import devandroid.jeferson.applistacurso.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
 
-
-
-
-
     PessoaController controller;
     Pessoa pessoa;
     EditText editprimeironome;
