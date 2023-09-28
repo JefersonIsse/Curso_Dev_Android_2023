@@ -1,25 +1,54 @@
 package devandroid.jeferson.applistacurso.controller;
 
+import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import java.util.List;
+
+import devandroid.jeferson.applistacurso.database.ListaVipDB;
 import devandroid.jeferson.applistacurso.model.Pessoa;
 import devandroid.jeferson.applistacurso.view.MainActivity;
 
-public class PessoaController {
+public class PessoaController extends ListaVipDB {
 
     SharedPreferences preferences;
     SharedPreferences.Editor listavip;
     public static final String NOME_PREFERENCES = "pref_listavip";
 
+
     public PessoaController(MainActivity mainActivity){
+            super(mainActivity);
 
         preferences = mainActivity.getSharedPreferences(NOME_PREFERENCES,0);
         listavip = preferences.edit();
 
+    }
 
+    public void salvar(Pessoa pessoa) {
+
+        ContentValues dados = new ContentValues();
+
+        Log.d("MVC_Controller", "Salvo: "+pessoa.toString());
+        listavip.putString("primeiroNome",pessoa.getPrimeiroNome());
+        listavip.putString("sobreNome",pessoa.getSobreNome());
+        listavip.putString("nomeCurso",pessoa.getCursoDesejado());
+        listavip.putString("Contato",pessoa.getTelContato());
+        listavip.apply();
+
+        dados.put("primeiroNome", pessoa.getPrimeiroNome());
+        dados.put("sobreNome", pessoa.getSobreNome());
+        dados.put("cursoDesejado", pessoa.getCursoDesejado());
+        dados.put("TelContato", pessoa.getTelContato());
+
+        salvarObjeto("Pessoa", dados);
+
+        /*"nomePrimeiroNome TEXT, " +
+                "nomeSobrenome TEXT, " +
+                "nomeCursoDesejado TEXT, " +
+                "telContato REAL, " +; */
 
     }
 
@@ -36,14 +65,10 @@ public class PessoaController {
 
 
     }
-    public void salvar(Pessoa pessoa) {
 
-        Log.d("MVC_Controller", "Salvo: "+pessoa.toString());
-        listavip.putString("primeiroNome",pessoa.getPrimeiroNome());
-        listavip.putString("sobreNome",pessoa.getSobreNome());
-        listavip.putString("nomeCurso",pessoa.getCursoDesejado());
-        listavip.putString("Contato",pessoa.getTelContato());
-        listavip.apply();
+
+    public List<Pessoa> getListaDados(){
+        return listarDados();
 
     }
 

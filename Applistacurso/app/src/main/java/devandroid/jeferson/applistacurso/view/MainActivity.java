@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     PessoaController controller;
-    CursoController cursoController; // Instanciar a Controladora Curso
+    CursoController cursoController;// Instanciar a Controladora Curso
 
     Pessoa pessoa;
     List<String> nomeDosCursos; // Criar uma Lista que recebe o objet tipo <Curso>
@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner spinner;
 
+    List<Pessoa> dados;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         controller = new PessoaController(MainActivity.this);
         controller.toString();
 
+
         cursoController = new CursoController(); // Cria o Objeto da controladora
         nomeDosCursos = cursoController.dadosparaSpinner(); // Chama o metodo getListaDeCursos e retribui o valor dele para listaDeCursos
 
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
        pessoa = new Pessoa();
        controller.buscar(pessoa);
+
+       dados = controller.getListaDados();
 
 
          // Inserir dados do Objeto no EditText

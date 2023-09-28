@@ -6,10 +6,20 @@ public class Pessoa {
     // Atributos - Objetos - Modelo - Template
     // Metodos de Acesso - Gets and Sets
 
+
+    private int id;
     private String primeiroNome;
     private String sobreNome;
     private String cursoDesejado;
     private String TelContato;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPrimeiroNome() {
         return primeiroNome;
@@ -43,7 +53,7 @@ public class Pessoa {
         TelContato = telContato;
     }
 
-    // To String - Para Textos - Para Strings de Caracteres
+// To String - Para Textos - Para Strings de Caracteres
 
     @Override
     public String toString() {
